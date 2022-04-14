@@ -1,0 +1,26 @@
+{
+    "name": "dauth/laravel-challenge-provider",
+    "description": "dAuth Challenge Provider SDK",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^8.0",
+        "ext-curl": "*",
+        "web3p/web3.php": "0.1.6"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "DAuth\\ChallengeSDK\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DAuth\\ChallengeSDK\\Providers\\BaseServiceProvider"
+            ]
+        }
+    }
+}
