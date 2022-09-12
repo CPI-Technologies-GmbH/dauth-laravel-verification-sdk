@@ -1,10 +1,10 @@
 <?php
 
 
-namespace DAuth\ChallengeSDK\Http\Client;
+namespace MaxTrax\ChallengeSDK\Http\Client;
 
 /**
- * Please check the dAuth Github for the crypto microservice. In production this should run on another server, which is not
+ * Please check the maxtrax Github for the crypto microservice. In production this should run on another server, which is not
  * reachable over any public network.
  */
 class CryptoMicroserviceClient
@@ -13,7 +13,7 @@ class CryptoMicroserviceClient
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->post(
-            config('dauth.microserviceUrl') . '/encrypt',
+            config('maxtrax.microserviceUrl') . '/encrypt',
             ['multipart' => [
                 [
                     'name' => 'msg',
@@ -33,7 +33,7 @@ class CryptoMicroserviceClient
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->post(
-            config('dauth.microserviceUrl') . '/sign',
+            config('maxtrax.microserviceUrl') . '/sign',
             ['multipart' => [
                 [
                     'name' => 'msg',
@@ -53,7 +53,7 @@ class CryptoMicroserviceClient
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->post(
-            config('dauth.microserviceUrl') . '/verifyrsv',
+            config('maxtrax.microserviceUrl') . '/verifyrsv',
             ['multipart' => [
                 [
                     'name' => 'msg',
@@ -86,7 +86,7 @@ class CryptoMicroserviceClient
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->post(
-            config('dauth.microserviceUrl') . '/verify',
+            config('maxtrax.microserviceUrl') . '/verify',
             ['multipart' => [
                 [
                     'name' => 'msg',

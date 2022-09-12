@@ -1,8 +1,6 @@
 <?php
 
-
-namespace DAuth\ChallengeSDK\Commands\Instances;
-
+namespace MaxTrax\ChallengeSDK\Commands\Instances;
 
 use Web3\Providers\HttpProvider;
 use Web3\RequestManagers\HttpRequestManager;
@@ -14,7 +12,7 @@ class GetWeb3Instance
 
     public function run(): Web3 {
         if($this->instance === null) {
-            $this->instance = new Web3(new HttpProvider(new HttpRequestManager(config('dauth.eth.url'))));
+            $this->instance = new Web3(new HttpProvider(new HttpRequestManager(config('maxtrax.eth.url'))));
         }
 
         return $this->instance;

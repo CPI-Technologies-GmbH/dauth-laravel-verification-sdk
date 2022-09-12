@@ -1,21 +1,19 @@
 <?php
 
+namespace MaxTrax\ChallengeSDK\Commands;
 
-namespace DAuth\ChallengeSDK\Commands;
-
-
-use DAuth\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
+use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 
 class CreateTokenContent
 {
-    protected VerifyDAuthData $verifyDAuthData;
+    protected VerifyMaxtraxData $verifyMaxtraxData;
 
     /**
-     * @param VerifyDAuthData $verifyDAuthData
+     * @param VerifyMaxtraxData $verifyMaxtraxData
      */
-    public function __construct(VerifyDAuthData $verifyDAuthData)
+    public function __construct(VerifyMaxtraxData $verifyMaxtraxData)
     {
-        $this->verifyDAuthData = $verifyDAuthData;
+        $this->verifyMaxtraxData = $verifyMaxtraxData;
     }
 
     public function run(array $history, string $address, string $providerName, string $providerAddress, string $logoUrl, string $content, array $addedFields, string $publicKey) {
@@ -26,7 +24,7 @@ class CreateTokenContent
         $new = [];
 
         // Will throw an exception if history is not valid. Will check on Ethereum blockchain, if the signer signatures are all valid
-        $this->verifyDAuthData->run($history);
+        $this->verifyMaxtraxData->run($history);
 
         foreach($history as $key => $value) {
             $data[$i] = $value;
@@ -64,11 +62,11 @@ class CreateTokenContent
         ];
 
         return [
-            'description' => config('dauth.content.description'),
-            'external_url' => config('dauth.content.external_url'),
-            'image' => config('dauth.content.image_path') . $address,
+            'description' => config('maxtrax.content.description'),
+            'external_url' => config('maxtrax.content.external_url'),
+            'image' => config('maxtrax.content.image_path') . $address,
             'verifications' => $data,
-            'version' => config('dauth.content.version'),
+            'version' => config('maxtrax.content.version'),
             'attributes' => $attributes,
         ];
     }

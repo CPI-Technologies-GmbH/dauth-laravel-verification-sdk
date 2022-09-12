@@ -1,6 +1,6 @@
 {
-    "name": "dauth/laravel-challenge-provider",
-    "description": "dAuth Challenge Provider SDK",
+    "name": "cpitech/maxtrax-challenge-provider",
+    "description": "MaxTrax Challenge Provider SDK",
     "type": "library",
     "require": {
         "laravel/framework": "^8.0",
@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DAuth\\ChallengeSDK\\": "src"
+            "Maxtrax\\ChallengeSDK\\": "src"
         }
     },
     "minimum-stability": "dev",
@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DAuth\\ChallengeSDK\\Providers\\BaseServiceProvider"
+                "MaxTrax\\ChallengeSDK\\Providers\\BaseServiceProvider"
             ]
         }
     }

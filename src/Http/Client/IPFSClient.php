@@ -1,6 +1,6 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Http\Client;
+namespace MaxTrax\ChallengeSDK\Http\Client;
 
 /*
     Copied from Cloutier\PhpIpfsApi;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Exceptions;
+namespace MaxTrax\ChallengeSDK\Exceptions;
 
 use Exception;
 

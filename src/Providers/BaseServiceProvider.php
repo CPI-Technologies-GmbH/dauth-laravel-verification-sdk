@@ -1,8 +1,8 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Providers;
+namespace MaxTrax\ChallengeSDK\Providers;
 
-use DAuth\ChallengeSDK\Commands\Instances\GetIPFSInstance;
+use MaxTrax\ChallengeSDK\Commands\Instances\GetIPFSInstance;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -20,7 +20,7 @@ class BaseServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../resources/abis' => resource_path('abis'),
-            __DIR__ . '../config/dauth.php' => config_path('dauth.php'),
+            __DIR__ . '../config/maxtrax.php' => config_path('maxtrax.php'),
         ]);
     }
 

@@ -1,17 +1,16 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Commands\Instances;
+namespace MaxTrax\ChallengeSDK\Commands\Instances;
 
-use Ethereum\SmartContract;
 use Web3\Contract;
 
 class GetContractInstance
 {
     public function run(): Contract {
-        $abi = file_get_contents(resource_path('abi/dauth.json'));
+        $abi = file_get_contents(resource_path('abi/maxtrax.json'));
 
         return new Contract(
-            config('dauth.eth.url'),
+            config('maxtrax.eth.url'),
             json_decode($abi,true)['abi']
         );
     }

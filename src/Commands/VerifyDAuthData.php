@@ -1,13 +1,12 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Commands;
+namespace MaxTrax\ChallengeSDK\Commands;
 
-use DAuth\ChallengeSDK\Commands\Instances\GetContractInstance;
-use DAuth\ChallengeSDK\Exceptions\HistoryMalformedException;
-use DAuth\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
-use Ethereum\DataType\EthD;
+use MaxTrax\ChallengeSDK\Commands\Instances\GetContractInstance;
+use MaxTrax\ChallengeSDK\Exceptions\HistoryMalformedException;
+use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 
-class VerifyDAuthData
+class VerifyMaxtraxData
 {
     private GetContractInstance $getContractInstance;
 
@@ -57,7 +56,7 @@ class VerifyDAuthData
             $contract = $this->getContractInstance->run();
 
             // Check if the signer was allowed to sign at this time
-            $contract->at(config('dauth.contract.address'))
+            $contract->at(config('maxtrax.contract.address'))
                 ->call('canSignAt', $value['signer'], $value['timestamp'], function($err, $result) use ($i) {
                     if($result[0] !== true) {
                         throw new HistoryMalformedException('Signer was not allowed to sign at this time in dataset ' . $i);
@@ -65,7 +64,7 @@ class VerifyDAuthData
                 });
 
             // Compare signer name
-            /* $contract->at(config('dauth.contract.address'))
+            /* $contract->at(config('maxtrax.contract.address'))
                 ->call('getSignerName', $value['signer'], function($err, $result) use ($value, $i) {
                     if($result[0] !== $value['provider']) {
                         throw new HistoryMalformedException('Provider name does not match in dataset ' . $i);

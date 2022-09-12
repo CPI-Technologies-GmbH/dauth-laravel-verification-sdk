@@ -1,20 +1,20 @@
 <?php
 
 
-namespace DAuth\ChallengeSDK\Commands;
+namespace MaxTrax\ChallengeSDK\Commands;
 
 
-use DAuth\ChallengeSDK\Commands\CreateTokenContent;
-use DAuth\ChallengeSDK\Commands\Instances\GetIPFSInstance;
-use DAuth\ChallengeSDK\Commands\VerifyDAuthData;
-use DAuth\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
+use MaxTrax\ChallengeSDK\Commands\CreateTokenContent;
+use MaxTrax\ChallengeSDK\Commands\Instances\GetIPFSInstance;
+use MaxTrax\ChallengeSDK\Commands\VerifyMaxtraxData;
+use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 use InvalidArgumentException;
 
 /**
  * Class AbstractVerification
- * @package DAuth\ChallengeSDK\Verifications
+ * @package Maxtrax\ChallengeSDK\Verifications
  */
-trait DAuthVerificationProvider {
+trait MaxtraxVerificationProvider {
 
     public function verifySignature(string $message, string $signature, string $address) {
         if(!CryptoMicroserviceClient::verify($message, $signature, $address)) {
@@ -24,7 +24,7 @@ trait DAuthVerificationProvider {
 
     public function verifyHistory(?array $history) {
         if($history !== null) {
-            app(VerifyDAuthData::class)->run($history);
+            app(VerifyMaxtraxData::class)->run($history);
         }
     }
 

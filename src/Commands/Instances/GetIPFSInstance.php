@@ -1,8 +1,8 @@
 <?php
 
-namespace DAuth\ChallengeSDK\Commands\Instances;
+namespace MaxTrax\ChallengeSDK\Commands\Instances;
 
-use DAuth\ChallengeSDK\Http\Client\IPFSClient;
+use MaxTrax\ChallengeSDK\Http\Client\IPFSClient;
 
 class GetIPFSInstance
 {
@@ -11,9 +11,9 @@ class GetIPFSInstance
     public function run(): IPFSClient {
         if($this->instance === null) {
             $this->instance = new IPFSClient(
-                config('dauth.ipfs.server'),
-                config('dauth.ipfs.port'),
-                config('dauth.ipfs.apiPort')
+                config('maxtrax.ipfs.server'),
+                config('maxtrax.ipfs.port'),
+                config('maxtrax.ipfs.apiPort')
             );
         }
 
