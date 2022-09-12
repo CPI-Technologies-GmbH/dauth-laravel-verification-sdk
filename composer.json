@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Maxtrax\\ChallengeSDK\\": "src"
+            "MaxTrax\\ChallengeSDK\\": "src"
         }
     },
     "minimum-stability": "dev",

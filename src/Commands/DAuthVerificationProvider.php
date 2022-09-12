@@ -12,7 +12,7 @@ use InvalidArgumentException;
 
 /**
  * Class AbstractVerification
- * @package Maxtrax\ChallengeSDK\Verifications
+ * @package MaxTrax\ChallengeSDK\Verifications
  */
 trait MaxtraxVerificationProvider {
 
