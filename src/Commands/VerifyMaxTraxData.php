@@ -6,7 +6,7 @@ use MaxTrax\ChallengeSDK\Commands\Instances\GetContractInstance;
 use MaxTrax\ChallengeSDK\Exceptions\HistoryMalformedException;
 use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 
-class VerifyMaxtraxData
+class VerifyMaxTraxData
 {
     private GetContractInstance $getContractInstance;
 

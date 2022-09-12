@@ -14,7 +14,7 @@ use InvalidArgumentException;
  * Class AbstractVerification
  * @package MaxTrax\ChallengeSDK\Verifications
  */
-trait MaxtraxVerificationProvider {
+trait MaxTraxVerificationProvider {
 
     public function verifySignature(string $message, string $signature, string $address) {
         if(!CryptoMicroserviceClient::verify($message, $signature, $address)) {
