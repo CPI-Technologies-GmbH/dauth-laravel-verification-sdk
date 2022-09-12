@@ -6,14 +6,14 @@ use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 
 class CreateTokenContent
 {
-    protected VerifyMaxtraxData $verifyMaxtraxData;
+    protected VerifyMaxTraxData $verifyMaxTraxData;
 
     /**
-     * @param VerifyMaxtraxData $verifyMaxtraxData
+     * @param VerifyMaxTraxData $verifyMaxTraxData
      */
-    public function __construct(VerifyMaxtraxData $verifyMaxtraxData)
+    public function __construct(VerifyMaxTraxData $verifyMaxTraxData)
     {
-        $this->verifyMaxtraxData = $verifyMaxtraxData;
+        $this->verifyMaxTraxData = $verifyMaxTraxData;
     }
 
     public function run(array $history, string $address, string $providerName, string $providerAddress, string $logoUrl, string $content, array $addedFields, string $publicKey) {
@@ -24,7 +24,7 @@ class CreateTokenContent
         $new = [];
 
         // Will throw an exception if history is not valid. Will check on Ethereum blockchain, if the signer signatures are all valid
-        $this->verifyMaxtraxData->run($history);
+        $this->verifyMaxTraxData->run($history);
 
         foreach($history as $key => $value) {
             $data[$i] = $value;

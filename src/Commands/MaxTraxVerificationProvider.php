@@ -6,7 +6,7 @@ namespace MaxTrax\ChallengeSDK\Commands;
 
 use MaxTrax\ChallengeSDK\Commands\CreateTokenContent;
 use MaxTrax\ChallengeSDK\Commands\Instances\GetIPFSInstance;
-use MaxTrax\ChallengeSDK\Commands\VerifyMaxtraxData;
+use MaxTrax\ChallengeSDK\Commands\VerifyMaxTraxData;
 use MaxTrax\ChallengeSDK\Http\Client\CryptoMicroserviceClient;
 use InvalidArgumentException;
 
@@ -24,7 +24,7 @@ trait MaxTraxVerificationProvider {
 
     public function verifyHistory(?array $history) {
         if($history !== null) {
-            app(VerifyMaxtraxData::class)->run($history);
+            app(VerifyMaxTraxData::class)->run($history);
         }
     }
 
