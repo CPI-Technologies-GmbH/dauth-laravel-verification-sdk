@@ -12,8 +12,9 @@ class GetIPFSInstance
         if($this->instance === null) {
             $this->instance = new IPFSClient(
                 config('maxtrax.ipfs.server'),
+                config('maxtrax.ipfs.apiPort'),
                 config('maxtrax.ipfs.port'),
-                config('maxtrax.ipfs.apiPort')
+                config('maxtrax.ipfs.headers')
             );
         }
 

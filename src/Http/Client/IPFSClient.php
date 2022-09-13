@@ -12,11 +12,13 @@ class IPFSClient {
     private $gatewayIP;
     private $gatewayPort;
     private $gatewayApiPort;
+    private $gatewayApiHeaders;
 
-    function __construct($ip = "localhost", $port = "8080", $apiPort = "5001") {
+    function __construct($ip = "localhost", $port = "8080", $apiPort = "5001", $gatewayApiHeaders = null) {
         $this->gatewayIP      = $ip;
         $this->gatewayPort    = $port;
         $this->gatewayApiPort = $apiPort;
+        $this->gatewayApiHeaders = $gatewayApiHeaders;
     }
 
     public function cat ($hash) {
@@ -32,6 +34,10 @@ class IPFSClient {
 
         $req = $this->curl("https://$ip:$port/api/v0/add?stream-channels=true", $content);
         $req = json_decode($req, TRUE);
+
+        if(empty($req['Hash'])) {
+            throw new \Exception("Invalid response from ipfs (https://$ip:$port/api/v0/add?stream-channels=true): " . json_encode($req));
+        }
 
         return $req['Hash'];
     }
@@ -69,7 +75,6 @@ class IPFSClient {
     }
 
     public function version () {
-
         $ip = $this->gatewayIP;
         $port = $this->gatewayApiPort;
         $response = $this->curl("https://$ip:$port/api/v0/version");
@@ -77,7 +82,7 @@ class IPFSClient {
         return $data["Version"];
     }
 
-    private function curl ($url, $data = "") {
+    private function curl ($url, $data = null) {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -86,16 +91,21 @@ class IPFSClient {
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
 
-        if ($data != "") {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data; boundary=a831rwxi1a3gzaorw1w2z49dlsor'));
+        $additionalHeaders = $this->gatewayApiHeaders;
+
+        if ($data != null) {
+            $additionalHeaders = array_merge($additionalHeaders, array('Content-Type: multipart/form-data; boundary=a831rwxi1a3gzaorw1w2z49dlsor'));
+
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, "--a831rwxi1a3gzaorw1w2z49dlsor\r\nContent-Type: application/octet-stream\r\nContent-Disposition: file; \r\n\r\n" . $data);
         }
 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $additionalHeaders);
+
         $output = curl_exec($ch);
 
         if ($output == FALSE) {
-            //todo: when ipfs doesn't answer
+            throw new \Exception('No response from IPFS!');
         }
         curl_close($ch);
 
